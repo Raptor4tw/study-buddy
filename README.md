@@ -70,3 +70,18 @@ The app will open automatically in your browser at `http://localhost:8501`.
 - PDF (`.pdf`)
 - Word (`.docx`)
 - Plain text (`.txt`)
+
+- 
+flowchart TB
+    subgraph FE["Streamlit Frontend"]
+        APP["app.py<br/>state machine · chat · sidebar<br/>dialogs · model selector · usage"]
+        AUI["auth_ui.py<br/>login / signup / logout"]
+    end
+    ...
+
+flowchart LR
+    DEV["git push / MR"] --> CI["GitLab CI"]
+    CI --> INST["pip install<br/>(cached)"]
+    INST --> PY["pytest tests/"]
+    PY -->|"pass"| OK["✅ green"]
+    PY -->|"fail"| NOK["❌ red"]
